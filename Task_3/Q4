@@ -1,0 +1,21 @@
+Question 4: Create the numbers 0 to 9 as int8 and as int64. Print the nbytes of each.
+
+AIM: Array Creation for a range of numbers with given dtype and printing nbytes.
+
+Code:
+print("Int8 array:\n",np.arange(0,10,dtype=np.int8),"\n Nbytes:\t",np.arange(0,10,dtype=np.int8).nbytes)
+print("Int64 array:\n",np.arange(0,10,dtype=np.int64),"\n Nbytes:\t",np.arange(0,10,dtype=np.int64).nbytes)
+
+Output:
+Int8 array:
+ [0 1 2 3 4 5 6 7 8 9] 
+ Nbytes:         10
+Int64 array:
+ [0 1 2 3 4 5 6 7 8 9] 
+ Nbytes:         80
+
+Explanation:
+Functions used: np.arange(),nbytes
+Usage: np.arange() is used for array creation with given range of numbers, nbytes used to calculate nbytes of array
+Observation: int8 array uses 1 byte per element, int64 uses 8 bytes per element.
+Note: code can also be written as separate variables and then printing variables separately.
