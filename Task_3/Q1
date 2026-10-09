@@ -1,0 +1,23 @@
+Question 1: Create an array from [3, 6, 9, 12, 15]. Print its shape, ndim, size and dtype.
+
+AIM: Array Creation, Attribute Identification
+
+Solution:
+import numpy as np
+array=np.array([3,6,9,12,15])
+print(array)
+print("Shape:",array.shape)
+print("Ndim:",array.ndim)
+print("Size:",array.size)
+print("DType:",array.dtype)
+
+Output:
+[ 3  6  9 12 15]
+Shape: (5,)
+Ndim: 1
+Size: 5
+DType: int64
+
+Explanation:
+Functions used: np.array,shape,ndim,size,dtype
+Usage: np.array for array creation; shape,ndim,size,dtype for attribute identification 
