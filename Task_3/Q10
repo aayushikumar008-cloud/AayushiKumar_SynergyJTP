@@ -1,0 +1,17 @@
+Question 10: Given marks = np.array([[45,80,67],[90,55,72],[38,60,85]]), print the marks that are 60 or above. Then count how many students scored 40 or more in each subject (column). Expected: [2 3 3].
+
+AIM: Printing array elements after checking conditions specified
+
+Code:
+import numpy as np
+marks = np.array([[45,80,67],[90,55,72],[38,60,85]])
+print("\nMarks>=60:",marks[marks>=60])
+print("Students with marks>=40 in each subject:",np.sum(marks>=40,axis=0))
+
+Output:
+Marks>=60: [80 67 90 72 60 85]
+Students with marks>=40 in each subject: [2 3 3]
+
+Explanation:
+Functions used: np.sum()
+Usage: summation of array elements with condition specified as argument and axis=0 to operate along the rows(each subject).
