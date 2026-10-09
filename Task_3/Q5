@@ -1,0 +1,20 @@
+Question 5: Use a = np.arange(1, 36).reshape(5, 7). Print the 3rd row, the 4th column, the last row and the last column.
+
+AIM: Array slicing as specified
+
+Code:
+import numpy as np
+a=np.arange(1,36).reshape(5,7)
+print("3rd row:\t",a[2])
+print("4th column:\t",a[:,3])
+print("Last row:\t",a[-1])
+print("Last column:\t",a[:,-1])
+
+Output:
+3rd row:         [15 16 17 18 19 20 21]
+4th column:      [ 4 11 18 25 32]
+Last row:        [29 30 31 32 33 34 35]
+Last column:     [ 7 14 21 28 35]
+
+Explanation:
+Key Concept: Array Slicing- First index: rows, Second Index(after ,): columns, Indexing starts from 0 from the left and -1 from the right
