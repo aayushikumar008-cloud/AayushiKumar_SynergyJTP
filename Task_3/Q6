@@ -1,0 +1,19 @@
+Question 6: Use the same array from Question 5. Print every second element of the first row. Print the 2x3 block from rows 1 to 2 and columns 2 to 4.
+
+AIM: Printing specified slices of original array
+
+Code:
+import numpy as np
+a=np.arange(1,36).reshape(5,7)
+print("Every second element of first row:\t",a[0,::2])
+print("\n2x3 block:\n",a[0:2,1:3])
+
+Output:
+Every second element of first row:       [1 3 5 7]
+
+2x3 block:
+ [[ 2  3]
+ [ 9 10]]
+
+Explanation:
+Key Concept: Array Slicing- Use of (start:stop:step) indexing.
