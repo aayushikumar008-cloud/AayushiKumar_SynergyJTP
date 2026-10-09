@@ -1,0 +1,19 @@
+Question 7: Given arr = np.arange(1, 13).reshape(2, 2, 3), print 6, then the first row of the second block ([7 8 9]), then the last element using negative indices (12).
+
+AIM: Printing specified elements and slices of array
+
+Code:
+import numpy as np
+arr=np.arange(1, 13).reshape(2, 2, 3)
+print(arr[0][1][2])
+print("First row of second block:\t",arr[1][0])
+print("Last element:",arr[1][1][2])
+
+Output:
+ 6
+First row of second block:       [7 8 9]
+Last element:    12
+
+Explanation:
+Key Concept: Array Slicing- usage of chain indexing.
+Note: Instead of chain indexing, it can also be written as arr[0,1,2].
