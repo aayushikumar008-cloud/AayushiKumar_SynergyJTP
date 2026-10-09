@@ -1,0 +1,18 @@
+Question 8: Use arr = np.array([4, 15, 8, 23, 42, 16, 7, 30]). Print the values greater than 10, the even values, and the values from 10 to 30 inclusive.
+
+AIM: Searching elements of given array and checking conditions
+
+Code:
+import numpy as np
+arr = np.array([4, 15, 8, 23, 42, 16, 7, 30])
+print("Values greater than 10:",arr[arr>10])
+print("Even values:",arr[arr%2==0])
+print("Values>=10 and <=30:",arr[(arr>=10) & (arr<=30)])
+
+Output:
+Values greater than 10: [15 23 42 16 30]
+Even values: [ 4  8 42 16 30]
+Values>=10 and <=30: [15 23 16 30]
+
+Explanation:
+Key Concept: Condition checking-arr[condition].
