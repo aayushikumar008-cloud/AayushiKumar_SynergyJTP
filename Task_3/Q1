@@ -2,7 +2,7 @@ Question 1: Create an array from [3, 6, 9, 12, 15]. Print its shape, ndim, size 
 
 AIM: Array Creation, Attribute Identification
 
-Solution:
+Code:
 import numpy as np
 array=np.array([3,6,9,12,15])
 print(array)
