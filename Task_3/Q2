@@ -1,0 +1,32 @@
+Question 2: Create a 3x2 array of zeros, a 2x4 array of ones with dtype=int, and a 2x3 array filled with 7 using np.full
+
+AIM: Array Creation using np.full function
+
+Code:
+import numpy as np
+print(np.full((3,2),0))
+print(np.full((2,4),1,dtype=int))
+print(np.full((2,3),7))
+
+OR
+import numpy as np
+a=np.full((3,2),0)
+b=np.full((2,4),1,dtype=int)
+c=np.full((2,3),7)
+print(a)
+print(b)
+print(c)
+
+Output:
+[[0 0]
+ [0 0]
+ [0 0]]
+[[1 1 1 1]
+ [1 1 1 1]]
+[[7 7 7]
+ [7 7 7]]
+
+Explanation:
+Function used: np.full()
+Usage of function: np.full() is used to create an array of the given shape/size (first argument) filled with the given element(sceond argument)
+np.zeroes() and np.ones() can also be used here.
