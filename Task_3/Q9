@@ -1,0 +1,19 @@
+Question 9: Find the indices of values greater than 15 using np.nonzero, then again using np.where. Expected: [1 3 4 5 7].
+
+AIM: Searching elements of array and checking condition using np.nonzero and np.where
+
+Code:
+import numpy as np
+arr=np.array([4, 15, 8, 23, 42, 16, 7, 30])
+indices_nonzero = np.nonzero(arr > 15)[0]
+indices_where = np.where(arr > 15)[0]
+print("\nIndices with np.nonzero:", indices_nonzero)
+print("Indices with np.where:", indices_where)
+
+Output:
+Indices with np.nonzero: [3 4 5 7]
+Indices with np.where: [3 4 5 7]
+
+Explanation:
+Functions used: np.nonzero(),np.where()
+Usage: Both functions used to give indices of array elements where condition is True.
