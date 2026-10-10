@@ -1,0 +1,25 @@
+Question 20: Given a = np.array([1,2,3,4,5]) and b = np.array([4,5,6,7]), compute the union, intersection, difference (a minus b) and symmetric difference. Expected: [1..7], [4 5], [1 2 3], [1 2 3 6 7].
+
+AIM: Computing set functions(union, intersection, difference, symmetric difference) on array.
+
+Code:
+import numpy as np
+a=np.array([1,2,3,4,5])
+b=np.array([4,5,6,7])
+print("\nUnion:",np.union1d(a,b))
+print("Intersection:",np.intersect1d(a,b))
+print("Difference:",np.setdiff1d(a,b))
+print("Symmetric Difference:",np.setxor1d(a,b))
+
+Output:
+Union: [1 2 3 4 5 6 7]
+Intersection: [4 5]
+Difference: [1 2 3]
+Symmetric Difference: [1 2 3 6 7]
+
+Explanation:
+Function used: np.union1d(),np.intersect1d(),np.setdiff1d(),np.setxor1d()
+Usage: np.union1d() returns union of the 2 1D arrays.
+np.intersect1d() returns intersection of the 2 1D arrays.
+np.setdiff1d() returns difference of the 2 1D arrays.
+np.setxor1d() returns symmetric difference of the 2 1D arrays.
