@@ -1,0 +1,182 @@
+Question 22: Write code that tries each of these additions and prints the result shape or the error message: (4,3)+(3,), (4,3)+(4,), (4,3)+(4,1), (2,3,4)+(3,1). Use np.ones for the arrays.
+
+AIM: Understanding array addition with differently-shaped arrays
+
+Code:
+PART A(NO ERROR):
+import numpy as np
+a=np.ones((4,3))
+b=np.ones((3,))
+print(a+b)
+a=np.ones((4,3))
+b=np.ones((4,1))
+print(a+b)
+a=np.ones((2,3,4))
+b=np.ones((3,1))
+print(a+b)
+
+Output:
+[[2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]]
+[[2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]]
+[[[2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+  [2. 2. 2. 2.]]
+
+ [[2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+
+PART B(ERROR):
+import numpy as np
+a=np.ones((4,3))
+b=np.ones((4,))
+print(a+b)
+
+Output:
+ValueError: operands could not be broadcast together with shapes (4,3) (4,)
+
+Explanation:
+Question 22: Write code that tries each of these additions and prints the result shape or the error message: (4,3)+(3,), (4,3)+(4,), (4,3)+(4,1), (2,3,4)+(3,1). Use np.ones for the arrays.
+
+AIM: Understanding array addition with differently-shaped arrays
+
+Code:
+PART A(NO ERROR):
+import numpy as np
+a=np.ones((4,3))
+b=np.ones((3,))
+print(a+b)
+a=np.ones((4,3))
+b=np.ones((4,1))
+print(a+b)
+a=np.ones((2,3,4))
+b=np.ones((3,1))
+print(a+b)
+
+Output:
+[[2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]]
+[[2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]]
+[[[2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+  [2. 2. 2. 2.]]
+
+ [[2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+
+PART B(ERROR):
+import numpy as np
+a=np.ones((4,3))
+b=np.ones((4,))
+print(a+b)
+
+Output:
+ValueError: operands could not be broadcast together with shapes (4,3) (4,)
+
+Explanation:
+Question 22: Write code that tries each of these additions and prints the result shape or the error message: (4,3)+(3,), (4,3)+(4,), (4,3)+(4,1), (2,3,4)+(3,1). Use np.ones for the arrays.
+
+AIM: Understanding array addition with differently-shaped arrays
+
+Code:
+PART A(NO ERROR):
+import numpy as np
+a=np.ones((4,3))
+b=np.ones((3,))
+print(a+b)
+a=np.ones((4,3))
+b=np.ones((4,1))
+print(a+b)
+a=np.ones((2,3,4))
+b=np.ones((3,1))
+print(a+b)
+
+Output:
+[[2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]]
+[[2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]]
+[[[2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+  [2. 2. 2. 2.]]
+
+ [[2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+
+PART B(ERROR):
+import numpy as np
+a=np.ones((4,3))
+b=np.ones((4,))
+print(a+b)
+
+Output:
+ValueError: operands could not be broadcast together with shapes (4,3) (4,)
+
+Explanation:
+Question 22: Write code that tries each of these additions and prints the result shape or the error message: (4,3)+(3,), (4,3)+(4,), (4,3)+(4,1), (2,3,4)+(3,1). Use np.ones for the arrays.
+
+AIM: Understanding array addition with differently-shaped arrays
+
+Code:
+PART A(NO ERROR):
+import numpy as np
+a=np.ones((4,3))
+b=np.ones((3,))
+print(a+b)
+a=np.ones((4,3))
+b=np.ones((4,1))
+print(a+b)
+a=np.ones((2,3,4))
+b=np.ones((3,1))
+print(a+b)
+
+Output:
+[[2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]]
+[[2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]
+ [2. 2. 2.]]
+[[[2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+  [2. 2. 2. 2.]]
+
+ [[2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+  [2. 2. 2. 2.]
+
+PART B(ERROR):
+import numpy as np
+a=np.ones((4,3))
+b=np.ones((4,))
+print(a+b)
+
+Output:
+ValueError: operands could not be broadcast together with shapes (4,3) (4,)
+
+Explanation:
+Key Concept: NumPy broadcasting.
+Case (4,3) + (3,): Works because (3,) broadcasts across the last dimension → each row adds [1,1,1].
+Case (4,3) + (4,1): Works because (4,1) broadcasts across columns → each row gets its own scalar added.
+Case (2,3,4) + (3,1): Works because dimensions align after broadcasting: (2,3,4) vs (3,1) → the (3,1) expands to (2,3,4).
+Case (4,3) + (4,): Fails because (4,) cannot align with (4,3) — the last dimensions 3 and 4 are incompatible
+ValueError: operands could not be broadcast together with shapes (4,3) (4,)ValueError: operands could not be broadcast together with shapes (4,3) (4,)
