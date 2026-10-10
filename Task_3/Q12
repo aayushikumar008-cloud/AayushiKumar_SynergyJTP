@@ -1,0 +1,22 @@
+Question 12: Create a = np.arange(1, 9) and b = a[2:6]. Set b[0] = 99 and print a. Repeat with b = a[2:6].copy() and print a again.
+
+AIM: Differentiating between Deep copy and Shallow copy
+
+Code:
+import numpy as np
+a = np.arange(1, 9) 
+b = a[2:6]
+b[0] = 99
+print("\nShallow copy:\t",a)
+a = np.arange(1, 9) 
+b=a[2:6].copy()
+b[0] = 99
+print("Deep copy:\t",a)
+
+Output:
+Shallow copy:       [ 1  2 99  4  5  6  7  8]
+Deep copy:    [1 2 3 4 5 6 7 8]
+
+Explanation:
+array_2=array1 creates a shallow copy of given array. This implies that any changes to the new array will reflect in original array.
+array_2=array_1.copy() creates a deep copy that is separate from original array, so the original array can be retained.
