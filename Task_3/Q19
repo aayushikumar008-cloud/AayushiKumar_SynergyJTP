@@ -1,0 +1,22 @@
+Question 19:  Given a = np.array([11,11,12,13,14,15,16,17,12,13,11,14,18,19,20]), print the unique values, how many times each occurs, and the first index of each. Expected counts: [3 2 2 2 1 1 1 1 1 1].
+
+AIM: Unique value identification, Counting frequency and first occurences.
+
+Code:
+import numpy as np
+a=np.array([11,11,12,13,14,15,16,17,12,13,11,14,18,19,20])
+unique,indices,counts=np.unique(a,return_index=True,return_counts=True)
+print("\nUnique:",unique)
+print("Counts:",counts)
+print("Indices:",indices)
+
+Output:
+Unique: [11 12 13 14 15 16 17 18 19 20]
+Counts: [3 2 2 2 1 1 1 1 1 1]
+Indices: [ 0  2  3  4  5  6  7 12 13 14]
+
+Explanation:
+Function used: np.unique(array)
+Usage: np.unique(array) gives back an array of unique elements.
+return_index=True returns index of first occurence of each unique element.
+return_counts=True returns frequency of occurrence of each unique element.
