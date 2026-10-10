@@ -1,0 +1,22 @@
+Question 14: Reshape np.arange(1, 13) into (3, 4), (2, 6), (2, 3, 2) and (4, -1). Print the shape of each.
+
+AIM: Understanding usage of array.reshape() function
+
+Code:
+import numpy as np
+a=np.arange(1, 13)
+print(a.reshape(3,4).shape)
+print(a.reshape(2,6).shape)
+print(a.reshape(2,3,2).shape)
+print(a.reshape(4,-1).shape)
+
+Output:
+(3, 4)
+(2, 6)
+(2, 3, 2)
+(4, 3)
+
+Explanation:
+Functions used: array.reshape(), array.shape()
+Usage: array.reshape() changes the shape(dimensions) of array as specified.
+array.shape() returns the shape(dimensions) of the array
