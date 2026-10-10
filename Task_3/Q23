@@ -1,0 +1,47 @@
+Question 23: Create a 3x4 array with rng.random. Print its overall sum, mean, min, max, std and prod, then the column sums, the row maxima, and the index of the overall maximum.
+
+AIM: Computing sum,min,max,colsum,rowsum,overall max,std,prod of given array.
+
+Code:
+import numpy as np
+rng=np.random.default_rng()
+a = rng.random((3, 4))
+print("Array:\n", a)
+print("\nOverall sum:", a.sum())
+print("Overall mean:", a.mean())
+print("Overall min:", a.min())
+print("Overall max:", a.max())
+print("Overall std:", a.std())
+print("Overall prod:", a.prod())
+print("\nColumn sums:", a.sum(axis=0))
+print("Row maxima:", a.max(axis=1))
+print("Index of overall maximum:", np.argmax(a))
+
+Output:
+Array:
+ [[0.41152775 0.3180588  0.3122564  0.20178737]
+ [0.24777216 0.78506656 0.96580913 0.86806495]
+ [0.07638196 0.9778768  0.73175683 0.38646088]]
+
+Overall sum: 6.282819585621501
+Overall mean: 0.5235682988017917
+Overall min: 0.07638196158491672
+Overall max: 0.977876797797828
+Overall std: 0.3068924104661845
+Overall prod: 2.840937252828249e-05
+
+Column sums: [0.73568188 2.08100215 2.00982236 1.4563132 ]
+Row maxima: [0.41152775 0.96580913 0.9778768 ]
+Index of overall maximum: 9
+
+Explanation:
+Function used: np.random.default_rng(), array.sum(), array,mean(), array.min(), array.max(), array.std(), array.prod(), np.argmax(array)
+Usage: np.random.default_rng() used for creating random float generator
+array.sum() used to calculate sum of elements of array
+array.sum(axis=0) used to calculate sum of elements of each row
+array.sum(axis=1) used to calculate sum of elements of each column
+array.min()/array.max() for min/max element
+array.mean() to calculate mean(average) of elements
+array.std()/array.prod() to calculate std and prod of array.
+np.argmax(array) to find the index of overall max element of array.
+Index of overall maximum: 9
