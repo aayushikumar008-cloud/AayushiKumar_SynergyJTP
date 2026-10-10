@@ -1,0 +1,30 @@
+Question 24: Given A = [[1,2],[3,4]] and B = [[5,6],[7,8]], print the element-wise product, the matrix product with np.matmul ([[19 22] [43 50]]), and the determinant of A with np.linalg.det (-2.0).
+
+AIM: Finding element-wise product, matrix multiplication product and determinant of matrix(array)
+
+Code:
+import numpy as np
+A=[[1,2],[3,4]]
+B=[[5,6],[7,8]]
+print("\nElement-wise product:\n", np.multiply(A,B))
+print("\nMatrix Multiplication:\n", np.matmul(A,B))
+print("\nDeterminant of A:",np.linalg.det(A))
+
+Output:
+Element-wise product:
+ [[ 5 12]
+ [21 32]]
+
+Matrix Multiplication:
+ [[19 22]
+ [43 50]]
+
+Determinant of A: -2.0000000000000004
+
+Explanation:
+Functions used: np.multiply(), np.matmul(), np.linalg.det()
+Usage: np.multiply() used for element-wise multiplication
+np.matmul() used for matrix multiplication
+np.linalg.det() used for finding the determinant of given matrix(array)
+
+np.linalg.det() used for finding the determinant of  given arrasy.
