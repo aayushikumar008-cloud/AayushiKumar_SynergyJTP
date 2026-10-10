@@ -1,0 +1,17 @@
+Question 11: Given s = np.array([2, 5, 8, 11, 14]), use np.searchsorted to find where 9 would be inserted. Then do it for [1, 12, 5] in one call. Expected: 3, then [0 4 1].
+
+AIM: Usage of np.searchsorted() for single element and multiple elements
+
+Code:
+import numpy as np
+s = np.array([2, 5, 8, 11, 14])
+print("\nPosition for 9:",np.searchsorted(s,9))
+print("Position for [1, 12, 5]:",np.searchsorted(s,[1, 12, 5]))
+
+Output:
+Position for 9: 3
+Position for [1, 12, 5]: [0 4 1]
+
+Explanation:
+Function used: np.searchsorted()
+Usage: Function takes a sorted array and gives back the location where the element is to be entered.
