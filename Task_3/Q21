@@ -1,0 +1,24 @@
+Question 21: Given m = np.arange(1, 10).reshape(3, 3), add the row [10, 20, 30] to every row. Then add the column [[100], [200], [300]] to every column.
+
+AIM: Adding rows and columns to existing array.
+
+Code:
+import numpy as np
+m=np.arange(1, 10).reshape(3, 3)
+row=np.array([10, 20, 30])
+col=np.array([[100], [200], [300]])
+print(m+row)
+print("\n",m+col)
+
+Output:
+ [[11 22 33]
+ [14 25 36]
+ [17 28 39]]
+
+ [[101 102 103]
+ [204 205 206]
+ [307 308 309]]
+
+Explanation:
+Direct addition of 1d array to given n-dimensional array results in addition of 1d array to the n-dimensional array along its axis.
+(Numpy broadcasting automatically adjusts the dimensions of the array.)
