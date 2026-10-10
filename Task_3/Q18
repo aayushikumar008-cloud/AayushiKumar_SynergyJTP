@@ -1,0 +1,49 @@
+Question 18: Given x = np.arange(1, 25).reshape(2, 12), split it into 3 equal parts. Split it after the 3rd and 4th columns. Then split np.arange(1, 7) into 4 parts with np.array_split.
+
+AIM: Understanding Array Splitting
+
+Code:
+import numpy as np
+x=np.arange(1, 25).reshape(2, 12)
+split_equal = np.split(x, 3, axis=1)
+print("\nSplit into 3 equal parts:")
+for part in split_equal:
+    print(part)
+split_cols = np.split(x, [3, 4], axis=1)
+print("\nSplit after 3rd and 4th columns:")
+for part in split_cols:
+    print(part)
+y = np.arange(1, 7)
+split_array = np.array_split(y, 4)
+print("\nSplit np.arange(1,7) into 4 parts:")
+for part in split_array:
+    print(part)
+
+Output:
+Split into 3 equal parts:
+[[ 1  2  3  4]
+ [13 14 15 16]]
+[[ 5  6  7  8]
+ [17 18 19 20]]
+[[ 9 10 11 12]
+ [21 22 23 24]]
+
+Split after 3rd and 4th columns:
+[[ 1  2  3]
+ [13 14 15]]
+[[ 4]
+ [16]]
+[[ 5  6  7  8  9 10 11 12]
+ [17 18 19 20 21 22 23 24]]
+
+Split np.arange(1,7) into 4 parts:
+[1 2]
+[3 4]
+[5]
+[6]
+
+Explanation:
+Functions used: np.split(), np.array_split()
+Usage: np.split(x,3,axis=1) divides the array into 3 equal parts along the column axis.
+np.split(x,[3,4],axis=1) splits array after 3rd and 4th column
+np.split_array(y,4) splits array into 4 nearly equal parts. Its a more flexible function as it allows arrays where division is not equal as well.
