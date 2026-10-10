@@ -1,0 +1,21 @@
+Question 13: Given x = np.array([[1,2,3],[4,5,6]]), create f = x.flatten() and r = x.ravel(). Set f[0] = 100 and r[1] = 200, then print x.
+
+AIM: Distinguishing between flatten() and ravel() functions of arrays.
+
+Code:
+import numpy as np
+x = np.array([[1,2,3],[4,5,6]])
+f = x.flatten()
+r = x.ravel()
+f[0] = 100
+r[1] = 200
+print(x)
+
+Output:
+[[  1 200   3]
+ [  4   5   6]]
+
+Explanation:
+Functions used: array.flatten(), array.ravel()
+Usage: array.flatten() returns a copy of the array, changes do not affect the original array.
+array.ravel() creates a view/shallow copy and changes do affect the original array.
