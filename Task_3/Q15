@@ -1,0 +1,35 @@
+Question 15: Given a = np.array([1, 2, 3, 4, 5, 6]), make a row vector (1, 6) and a column vector (6, 1). Do it once with np.newaxis and once with np.expand_dims.
+
+AIM: Array Manipulation with array.newaxis and array.expand_dims()
+
+Code:
+import numpy as np
+a=np.array([1,2,3,4,5,6])
+print(a[np.newaxis:,])
+print("\n",a[:,np.newaxis])
+print("\n",np.expand_dims(a,axis=0))
+print("\n",np.expand_dims(a,axis=1))
+
+Output:
+ [1 2 3 4 5 6]
+
+ [[1]
+ [2]
+ [3]
+ [4]
+ [5]
+ [6]]
+
+ [[1 2 3 4 5 6]]
+
+ [[1]
+ [2]
+ [3]
+ [4]
+ [5]
+ [6]]
+
+Explanation:
+Functions used: array[np.newaxis], np.expand_dims(array,axis)
+Usage: np.newaxis adds a new dimension to the array when used in slicing.
+np.expand_dims explicitly adds a new axis at the specified position.
