@@ -1,0 +1,29 @@
+Question 16: Given a 3x4 array of 1 to 12, print np.flip with no axis, with axis=0 and with axis=1.
+
+AIM: Understanding usage of np.flip() with different axes
+
+Code:
+import numpy as np
+a=np.arange(1,13).reshape(3,4)
+print("\n",np.flip(a))
+print("\n",np.flip(a, axis=0))
+print("\n",np.flip(a, axis=1))
+
+Output:
+ [[12 11 10  9]
+ [ 8  7  6  5]
+ [ 4  3  2  1]]
+
+ [[ 9 10 11 12]
+ [ 5  6  7  8]
+ [ 1  2  3  4]]
+
+ [[ 4  3  2  1]
+ [ 8  7  6  5]
+ [12 11 10  9]]
+
+Explanation:
+Function used: np.flip()
+Usage: When no axis is entered, np.flip() flips the array along all axes, i.e. reversing the row order and the element order in the rows(column order).
+When axis=0, np.flip() only flips the array along axis 0, i.e. reverses the row order.
+When axis=1, np.flip() only flips the array along axis 1, i.e. reverses the element order in each row(column order).
