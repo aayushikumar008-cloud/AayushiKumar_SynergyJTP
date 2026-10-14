@@ -1,0 +1,42 @@
+Question 21: How Many Bins Is Too Many?
+
+AIM: Compare histograms with different bin widths and add mean/median lines.
+
+Code:
+import matplotlib.pyplot as plt
+import numpy as np
+
+scores = [12,18,22,25,28,31,33,35,38,41,44,47,52,55,58,61,67,74,88,95]
+
+fig, axes = plt.subplots(1,2,figsize=(10,4),sharey=True)
+
+axes[0].hist(scores,bins=5,range=(0,100))
+axes[0].set_title("5 bins")
+axes[0].set_xlabel("Score")
+axes[0].set_ylabel("Count")
+
+axes[1].hist(scores,bins=10,range=(0,100))
+axes[1].set_title("10 bins")
+axes[1].set_xlabel("Score")
+
+mean=np.mean(scores)
+median=np.median(scores)
+for ax in axes:
+    ax.axvline(mean,color='red',linestyle='--',label='Mean')
+    ax.axvline(median,color='green',linestyle=':',label='Median')
+    ax.legend()
+
+plt.suptitle("Game Level Scores Distribution")
+plt.show()
+
+print("Mean:",mean,"Median:",median)
+
+
+Output:
+Mean: 46.2 Median: 42.5
+
+Explanation:  
+Functions used: hist(), axvline(), mean(), median()
+Usage: hist() to draw histograms, axvline() to mark mean/median, mean() to compute average, median() to compute middle value
+Interpretation: The distribution is right-skewed with a long tail of high scores. 
+The 5-bin histogram clearly shows the overall shape, while 10 bins make it harder to read. The 5-bin width is better.
