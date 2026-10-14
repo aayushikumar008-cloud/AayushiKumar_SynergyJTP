@@ -1,0 +1,33 @@
+Question 19: Does Practice Really Drive Skill?
+
+AIM: Scatter plot hours vs rating, compute correlation with and without outlier.
+
+Code:
+import pandas as pd
+import matplotlib.pyplot as plt
+
+players = pd.DataFrame({'hours':[1,2,3,4,5,6,7,8,9,20],
+                        'rating':[50,56,48,55,52,57,49,54,51,95]})
+
+plt.scatter(players['hours'], players['rating'], c='blue')
+plt.scatter(20,95,c='red',label='Outlier')
+plt.xlabel("Hours")
+plt.ylabel("Rating")
+plt.title("Practice vs Skill")
+plt.legend()
+plt.show()
+
+corr_all = players['hours'].corr(players['rating'])
+corr_typical = players.iloc[:-1]['hours'].corr(players.iloc[:-1]['rating'])
+print("Correlation all:", round(corr_all,2))
+print("Correlation without outlier:", round(corr_typical,2))
+
+Output:
+Correlation all: 0.86
+Correlation without outlier: 0.03
+
+Explanation:  
+Functions used: scatter(), corr(), iloc[]
+Usage: scatter() to plot points, corr() to compute correlation, iloc[] to exclude outlier
+Interpretation: With all players correlation ≈ 0.86, but without the 20-hour outlier it drops to ≈ 0.03. 
+The coach’s claim is not supported for typical players.
