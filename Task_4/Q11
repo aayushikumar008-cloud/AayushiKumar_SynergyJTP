@@ -1,0 +1,44 @@
+Question 11: Highest Revenue, Highest Profit?
+
+AIM: To compute revenue, profit, and profit margin per product, and identify leaders for each measure.
+
+Code:
+import pandas as pd
+
+sales = pd.DataFrame({
+    'product': ['Phone Case', 'Phone Case', 'Earbuds', 'Earbuds', 'Smart Watch', 'Smart Watch',
+                'Power Bank', 'Power Bank', 'Screen Guard', 'Screen Guard'],
+    'month': ['Aug', 'Sep'] * 5,
+    'units': [180, 120, 100, 50, 50, 40, 90, 110, 300, 200],
+    'price': [299, 299, 1499, 1499, 2999, 2999, 999, 999, 99, 99],
+    'cost': [120, 120, 1300, 1300, 2700, 2700, 650, 650, 40, 40]
+})
+
+sales['revenue'] = sales['units'] * sales['price']
+sales['profit'] = (sales['price'] - sales['cost']) * sales['units']
+
+summary = sales.groupby('product')[['revenue','profit']].sum()
+summary['margin'] = (summary['profit'] / summary['revenue'] * 100).round(1)
+
+print(summary.sort_values('revenue', ascending=False))
+print("\nHighest revenue product:", summary['revenue'].idxmax(), summary['revenue'].max())
+print("Highest profit product:", summary['profit'].idxmax(), summary['profit'].max())
+
+
+Output:
+              revenue  profit  margin
+product                              
+Smart Watch    269910   26910    10.0
+Power Bank     179790   69800    38.8
+Phone Case      89670   53700    59.9
+Earbuds        224850   12450     5.5
+Screen Guard    49500   29500    59.6
+
+Highest revenue product: Smart Watch 269910
+Highest profit product: Power Bank 69800
+
+Explanation:
+Functions used: df['units']*df['price'], groupby(), sum(), idxmax().
+Usage: df['units']*df['price'] to compute revenue, groupby() to aggregate by product, sum() to find total and idxmax() to find leaders.
+Interpretation: Promote Power Bank due to its strong profit and margin. 
+Smart Watch looks successful only because of its high price, but its margin is weak.
