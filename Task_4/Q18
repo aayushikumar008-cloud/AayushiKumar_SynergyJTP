@@ -1,0 +1,41 @@
+Question 18: Who is Buying the Tickets?
+
+AIM: Compare internal vs external visitors with stacked and grouped bar charts.
+
+Code:
+import matplotlib.pyplot as plt
+import numpy as np
+
+day = ['Day 1','Day 2','Day 3']
+internal = [120,150,90]
+external = [30,80,160]
+
+plt.bar(day, internal, label='Internal')
+plt.bar(day, external, bottom=internal, label='External')
+plt.title("Tickets Sold (Stacked)")
+plt.legend()
+plt.show()
+
+x = np.arange(len(day))
+plt.bar(x-0.2, internal, width=0.4, label='Internal')
+plt.bar(x+0.2, external, width=0.4, label='External')
+plt.xticks(x, day)
+plt.title("Tickets Sold (Grouped)")
+plt.legend()
+plt.show()
+
+totals = np.array(internal) + np.array(external)
+shares = np.array(external)/totals*100
+print("Totals:", totals)
+print("External shares:", shares.round(1))
+
+
+Output:
+Totals: [150 230 250]
+External shares: [20.0 34.8 64.0]
+
+Explanation:  
+Functions used: bar(), legend(), title(), xticks()
+Usage: bar() to draw bars, legend() to label groups, title() to add chart titles, xticks() to set day labels
+Interpretation: Stacked bars show total footfall better, grouped bars compare internal vs external more clearly. 
+External share rises from 20% to 64%, with Day 3 most dependent on outside visitors
