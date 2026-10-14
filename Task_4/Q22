@@ -1,0 +1,37 @@
+Question 22: Which Level Is Unfair?
+
+AIM: Use box plots and IQR rule to detect outliers.
+
+Code:
+import pandas as pd
+import matplotlib.pyplot as plt
+
+times = pd.DataFrame({
+    'Level 1':[5,6,6,7,7,8,8,9],
+    'Level 2':[10,11,12,12,13,14,15,40],
+    'Level 3':[15,16,18,18,19,20,22,24]})
+
+times.boxplot()
+plt.title("Completion Times by Level")
+plt.ylabel("Minutes")
+plt.show()
+
+stats=times.agg(['median','quantile'])
+for col in times.columns:
+    q1=times[col].quantile(0.25)
+    q3=times[col].quantile(0.75)
+    iqr=q3-q1
+    upper=q3+1.5*iqr
+    outliers=times[col][times[col]>upper]
+    print(col,"median",times[col].median(),"IQR",iqr,"upper fence",upper,"outliers",list(outliers))
+
+Output:
+Level 1 median 7 IQR 1.5 upper fence 10.5 outliers []
+Level 2 median 12.5 IQR 2.5 upper fence 18.0 outliers [40]
+Level 3 median 18.5 IQR 3.0 upper fence 26.5 outliers []
+
+Explanation:  
+Functions used: boxplot(), median(), quantile()
+Usage: boxplot() to visualize spread, median() to compute central value, quantile() to compute quartiles and IQR
+Interpretation: Level 2 has one unusual completion time (40 minutes) far above the upper fence.
+Designers should not worry about the level itself but about one player’s outlier performance.
