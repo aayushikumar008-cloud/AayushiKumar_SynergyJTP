@@ -1,0 +1,46 @@
+Question 1:Fest Attendance Check
+
+AIM: Understanging DataFrame creation and attributes. Adding columns. Data Interpration.
+
+Code:
+import pandas as pd
+import matplotlib as plt
+events = {
+    'event': ['City Scaping', 'salutes and ladders', 'Open Mic', '', 'Valorant tournament'],
+    'registered': [180, 95, 140, 60, 210],
+    'attended': [150, 70, 135, 52, 160],
+    'fee': [200, 150, 0, 50, 100]
+}
+
+df = pd.DataFrame(events)
+
+# Print shape and dtypes
+print("Shape before new column:", df.shape)
+print("\nData types:\n", df.dtypes)
+df['attendance_rate'] = (df['attended'] / df['registered'] * 100).round(1)
+most_reg_event = df.loc[df['registered'].idxmax(), 'event']
+most_reg_value = df['registered'].max()
+most_reg_rate = df.loc[df['registered'].idxmax(), 'attendance_rate']
+best_rate_event = df.loc[df['attendance_rate'].idxmax(), 'event']
+best_rate_value = df['attendance_rate'].max()
+
+print("\nEvent with most registrations:", most_reg_event, "(",most_reg_value, "rate ",most_reg_rate,")")
+print("Event with highest attendance rate:", best_rate_event, "(",best_rate_value,")")
+
+Output:
+Shape before new column: (5, 4)
+
+Data types:
+ event           str
+registered    int64
+attended      int64
+fee           int64
+dtype: object
+
+Event with most registrations: Valorant tournament ( 210 rate  76.2 )
+Event with highest attendance rate: Open Mic ( 96.4 )
+
+Explanation:
+Functions used: df.DataFrame(),df.shape,df.dtypes,df.loc[],df.idxmax()
+Usage: df.DataFrame() for dataframe creation, df.shape and df.dtypes for attributes, df.loc to find corresponding value of dataframe, df.idxmax() for max value of that category
+Interpretation: After judging the events with highest registration vs highest attendance rate and seeing that they do not coincide, we conclude that one must not judge an event on registrations alone. Further data is needed.
