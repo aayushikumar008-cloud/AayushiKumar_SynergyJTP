@@ -1,0 +1,37 @@
+Question 6: Online Store Catalog Search
+
+AIM: Filtering with string contains, isin, between, and combined conditions.
+
+Code:
+import pandas as pd
+
+catalog = {
+    'product': ['USB-C Hub Pro', 'Notebook A5', 'Gel Pen Pack', 'Laptop Stand Pro',
+                'Desk Lamp', 'Mouse Pad XL', 'Webcam Pro', 'Sticky Notes'],
+    'category': ['Electronics', 'Stationery', 'Stationery', 'Electronics',
+                 'Home', 'Accessories', 'Electronics', 'Stationery'],
+    'price': [1299, 120, 90, 1599, 899, 349, 2499, 60],
+    'units_sold': [85, 400, 520, 60, 110, 230, 25, 610]
+}
+
+df = pd.DataFrame(catalog)
+pro_products = df[df['product'].str.contains('Pro')]
+print("(a) Count:", len(pro_products))
+stationery_home = df[df['category'].isin(['Stationery', 'Home'])]
+print("(b) Count:", len(stationery_home))
+mid_price = df[df['price'].between(300, 1500)]
+print("(c) Count:", len(mid_price))
+pro_low_sales = pro_products[pro_products['units_sold'] < 70]
+print("(d) Count:", len(pro_low_sales))
+
+Output:
+(a) Count: 3
+(b) Count: 4
+(c) Count: 3
+(d) Count: 2
+
+Explanation:
+Functions used: df.str.contains(), df.isin(), df.between()
+Usage: str.contains() to check presence of substring in string, isin to check presence in given category, between to give range for condition
+Interpretation: Premium “Pro” products may not sell well despite high prices. 
+This suggests the store should reconsider its strategy, perhaps customers prefer affordable, high‑volume items over expensive Pro versions.
