@@ -1,0 +1,41 @@
+Question 8: Ohms Xerox Duplicate Orders and Messy Product Names
+
+AIM: Detecting duplicates, cleaning text, and measuring revenue inflation due to bad data.
+
+Code:
+import pandas as pd
+
+orders = pd.DataFrame({
+    'order_id': [101, 102, 103, 101, 104, 105, 106, 105],
+    'customer': ['Asha', 'ravi', 'Meera', 'Asha', 'Kiran', 'ravi', 'Meera', 'Ravi'],
+    'product': ['laptop bag', 'Laptop Bag ', 'desk lamp', 'laptop bag',
+                'DESK LAMP', 'notebook', 'Notebook', 'Notebook '],
+    'amount': [1200, 1200, 900, 1200, 900, 150, 150, 150]
+})
+raw_dedup = orders.drop_duplicates()
+print("Rows after raw dedup:", len(raw_dedup))
+orders['customer'] = orders['customer'].str.strip().str.capitalize()
+orders['product'] = orders['product'].str.strip().str.lower()
+clean_dedup = orders.drop_duplicates()
+print("Rows after cleaning:", len(clean_dedup))
+print("Distinct products:", clean_dedup['product'].nunique())
+raw_revenue = orders['amount'].sum()
+clean_revenue = clean_dedup['amount'].sum()
+print("Revenue raw:", raw_revenue)
+print("Revenue cleaned:", clean_revenue)
+inflation_pct = round((raw_revenue - clean_revenue) / clean_revenue * 100, 1)
+print("Revenue overstated by:", inflation_pct, "%")
+
+Output:
+Rows after raw dedup: 7
+Rows after cleaning: 6
+Distinct products: 3
+Revenue raw: 5850
+Revenue cleaned: 4500
+Revenue overstated by: 30.0 %
+
+Explanation:
+Functions used: drop_duplicates(),str.strip(),str.capitalize(),str.lower()
+Usage: Dropping duplicates, cleaning white spaces, capitalizing and changing to lowercase respectively.
+Interpretation: Revenue inflated from 4500 to 5850 (30% overstatement).
+The first attempt missed a duplicate because inconsistent capitalization and trailing spaces prevented exact matches.
