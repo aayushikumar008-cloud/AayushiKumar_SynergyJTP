@@ -1,0 +1,36 @@
+Question 12: The Misleading Conversion Rate
+
+AIM: To show why averaging daily conversion rates is misleading, and correct the analysis by aggregating visitors and signups first.
+
+Code:
+import pandas as pd
+
+funnel = pd.DataFrame({'channel': ['A', 'A', 'B', 'B'],
+                       'visitors': [10, 490, 100, 100],
+                       'signups': [6, 49, 20, 20]})
+
+funnel['rate'] = funnel['signups'] / funnel['visitors'] * 100
+print("Flawed average rates:\n", funnel.groupby('channel')['rate'].mean())
+
+correct = funnel.groupby('channel')[['visitors','signups']].sum()
+correct['rate'] = correct['signups'] / correct['visitors'] * 100
+print("\nCorrected rates:\n", correct['rate'])
+
+Output:
+Flawed average rates:
+channel
+A    35.0
+B    20.0
+Name: rate, dtype: float64
+
+Corrected rates:
+channel
+A    11.0
+B    20.0
+Name: rate, dtype: float64
+
+Explanation:
+Functions used: groupby(), mean(), sum().
+Usage: groupby() to group by subject, sum() to aggregate totals, mean() to calculate averages
+Interpretation: Flawed code suggests Channel A wins with 35.0,but corrected analysis shows Channel B converts better (20.0 vs 11.0).
+Jio should invest in Channel B.
