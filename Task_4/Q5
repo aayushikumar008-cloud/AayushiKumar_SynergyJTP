@@ -1,0 +1,35 @@
+Question 5: Is the Busiest Hour the Most Wasteful?
+
+AIM:To calculate waste and waste percentage, and compare busiest vs most wasteful hours.
+
+Code:
+import pandas as pd
+
+canteen = {
+    'hour': [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+    'sold': [40, 55, 35, 90, 210, 180, 60, 30, 70, 95],
+    'prepared': [50, 60, 50, 100, 220, 230, 80, 60, 90, 110]
+}
+
+df = pd.DataFrame(canteen).set_index('hour')
+df['waste'] = df['prepared'] - df['sold']
+df['waste_pct'] = (df['waste'] / df['prepared'] * 100).round(1)
+most_sold_hour = df['sold'].idxmax()
+most_waste_hour = df['waste'].idxmax()
+most_waste_value = df['waste'].max()
+most_waste_pct_hour = df['waste_pct'].idxmax()
+most_waste_pct_value = df['waste_pct'].max()
+print("(a) Most sold hour:", most_sold_hour)
+print("(b) Highest waste hour:", most_waste_hour, "with", most_waste_value, "items wasted")
+print("(c) Highest waste percentage hour:", most_waste_pct_hour, "with", most_waste_pct_value, "%")
+
+
+Output:
+(a) Most sold hour: 12
+(b) Highest waste hour: 13 with 50 items wasted
+(c) Highest waste percentage hour: 15 with 50.0 %
+
+Explanation:
+Functions used: set_index(),idxmax(), max().
+Usage: set_index() to set index for dataframe, idxmax for max value.
+Interpretation: 15:00 would be the best hour to cut, because half the food prepared is wasted, even though sales are low.
