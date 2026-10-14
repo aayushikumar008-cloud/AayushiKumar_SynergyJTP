@@ -1,0 +1,49 @@
+Question 2: Fitness Tracker Week
+
+AIM: Dataframe creation from numpy array and type conversion
+
+Code:
+import numpy as np
+import pandas as pd
+
+data = np.array([[8200, 7.5, 40], [10400, 6.5, 55], [6100, 8.0, 20],
+                 [12000, 6.0, 70], [9800, 7.0, 50], [3000, 9.0, 10],
+                 [7500, 8.5, 35]])
+days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+df = pd.DataFrame(data, index=days, columns=['steps', 'sleep_hours', 'active_minutes'])
+
+# Convert steps and active_minutes to integers
+df['steps'] = df['steps'].astype(int)
+df['active_minutes'] = df['active_minutes'].astype(int)
+
+# Summary statistics
+print("Summary:\n", df.describe())
+
+# Find day with most steps and least sleep
+most_steps_day = df['steps'].idxmax()
+least_sleep_day = df['sleep_hours'].idxmin()
+
+print("\nDay with most steps:", most_steps_day)
+print("Day with least sleep:", least_sleep_day)
+
+
+Output:
+Summary:
+               steps  sleep_hours  active_minutes
+count      7.000000     7.000000        7.000000
+mean    8142.857143     7.500000       40.000000
+std     2993.246366     1.080123       20.615528
+min     3000.000000     6.000000       10.000000
+25%     6800.000000     6.750000       27.500000
+50%     8200.000000     7.500000       40.000000
+75%    10100.000000     8.250000       52.500000
+max    12000.000000     9.000000       70.000000
+
+Day with most steps: Thu
+Day with least sleep: Thu
+
+Explanation:
+Functions used: pd.DataFrame(), df.astype(),df.describe(),df.idxmax(),df.idxmin()
+Usage: df.astype() for datatype conversion, df.describe() to give dataframe summary, df.idxmax()/df.idxmin() for max/min value
+Interpretation: Further data required would include multiple weeks, more participants, more lifestyle variables(like stress, diet, work schedule)
