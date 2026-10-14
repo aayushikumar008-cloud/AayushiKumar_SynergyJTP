@@ -1,0 +1,37 @@
+Question 14: Delhi’s Traffic and Air Quality
+
+AIM: Combine weekly logs, compute correlation, and weekly mean PM2.5.
+
+Code:
+import pandas as pd
+
+week1 = pd.DataFrame({'vehicles_k': [30, 35, 40, 45], 'pm25': [52, 55, 60, 63]})
+week2 = pd.DataFrame({'vehicles_k': [50, 55, 60, 65], 'pm25': [68, 72, 75, 80]})
+
+combined = pd.concat([week1, week2], ignore_index=True)
+combined['week'] = ['Week1']*len(week1) + ['Week2']*len(week2)
+
+print("Combined shape:", combined.shape)
+
+corr = combined['vehicles_k'].corr(combined['pm25'])
+print("Correlation:", round(corr,3))
+
+means = combined.groupby('week')['pm25'].mean()
+print("\nWeekly mean PM2.5:\n", means)
+
+Output:
+Combined shape: (8, 3)
+Correlation: 0.999
+
+Weekly mean PM2.5:
+week
+Week1    57.50
+Week2    73.75
+Name: pm25, dtype: float64
+
+Explanation:  
+Functions used: concat(), corr(), groupby(), mean()
+Usage: concat() to combine datasets, corr() to compute correlation, groupby() to group by week, mean() to calculate weekly averages
+Interpretation:
+Correlation ≈ 0.999 shows strong link between vehicles and PM2.5. Week2 mean 73.75 exceeds 70, triggering an alert. 
+Other factors like weather or industrial emissions could also influence PM2.5.
