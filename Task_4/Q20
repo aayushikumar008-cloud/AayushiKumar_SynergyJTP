@@ -1,0 +1,40 @@
+Question 20: Traffic Is Not the Whole Story
+
+AIM: Plot vehicles vs PM2.5, color by zone, scale by population.
+
+Code:
+import pandas as pd
+import matplotlib.pyplot as plt
+
+stations = pd.DataFrame({
+    'station':['S1','S2','S3','S4','S5','S6','S7','S8'],
+    'vehicles_k':[35,40,65,60,45,50,70,30],
+    'pm25':[58,60,80,77,110,115,83,52],
+    'zone':['Residential','Residential','Commercial','Commercial',
+            'Industrial','Industrial','Commercial','Residential'],
+    'population_k':[40,45,30,25,15,10,35,50]})
+
+colors = {'Residential':'blue','Commercial':'green','Industrial':'red'}
+stations['color'] = stations['zone'].map(colors)
+
+plt.scatter(stations['vehicles_k'], stations['pm25'],
+            c=stations['color'], s=stations['population_k']*5, label=None)
+
+for zone,color in colors.items():
+    plt.scatter([],[],c=color,label=zone)
+
+plt.xlabel("Vehicles (k)")
+plt.ylabel("PM2.5")
+plt.title("Traffic vs Pollution")
+plt.legend()
+plt.show()
+
+
+Output:
+Scatter plot with colored zones and scaled sizes.
+
+Explanation:  
+Functions used: scatter(), map(), legend(), xlabel(), ylabel(), title()
+Usage: scatter() to plot points, map() to assign colors, legend() to show zones, xlabel() and ylabel() to label axes, title() to add chart title
+Interpretation: Industrial stations S5 and S6 record PM2.5 above 100 despite only 45–50k vehicles, while the busiest station S7 (70k vehicles) records only 83.
+Traffic is not the sole driver; industrial activity explains the anomaly.
