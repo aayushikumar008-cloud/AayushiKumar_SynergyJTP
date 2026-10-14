@@ -1,0 +1,38 @@
+Question 13: The Catalog Gap
+
+AIM: Merge tables with different join types and compute total plays per artist.
+
+Code:
+import pandas as pd
+
+tracks = pd.DataFrame({'track_id': [1, 2, 3, 4],
+                       'title': ['Neon Drive', 'Gravity', 'Night Bus', 'Dust Roads'],
+                       'artist': ['Aria', 'Vega', 'Aria', 'Mohan']})
+plays = pd.DataFrame({'track_id': [1, 2, 3, 5], 'plays': [520, 450, 280, 90]})
+
+inner = tracks.merge(plays, on='track_id', how='inner')
+left = tracks.merge(plays, on='track_id', how='left')
+outer = tracks.merge(plays, on='track_id', how='outer')
+
+print("Row counts - inner:", len(inner), "left:", len(left), "outer:", len(outer))
+
+report = left.fillna({'plays':0})
+artist_totals = report.groupby('artist')['plays'].sum()
+print("\nTotal plays per artist:\n", artist_totals)
+
+Output:
+Row counts - inner: 3 left: 4 outer: 5
+
+Total plays per artist:
+artist
+Aria     800
+Mohan      0
+Vega     450
+Name: plays, dtype: int64
+
+Explanation:
+Functions used: merge(), fillna(), groupby(), sum()
+Usage: merge() to join tables, fillna() to replace missing plays with 0, groupby() to group by artist, sum() to compute total plays
+Interpretation: Inner join hides track_id 4 and 5, left join keeps all catalog tracks, outer join shows unmatched track_id 5. 
+Track_id 5 indicates a play record for a track missing from the catalog.
+Left join is correct for the report.
