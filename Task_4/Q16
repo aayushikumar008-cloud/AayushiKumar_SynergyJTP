@@ -1,0 +1,33 @@
+Question 16: Manipal Weather Swings
+
+AIM: Plot high and low temperatures, compute largest daily swing.
+
+Code:
+import numpy as np
+import matplotlib.pyplot as plt
+
+days = np.arange(1, 11)
+high = np.array([31, 32, 30, 29, 33, 35, 34, 28, 27, 30])
+low = np.array([24, 25, 23, 24, 25, 26, 24, 22, 22, 23])
+
+plt.plot(days, high, 'o-', label='High (°C)')
+plt.plot(days, low, 's--', label='Low (°C)')
+plt.xlabel("Day")
+plt.ylabel("Temperature (°C)")
+plt.title("Manipal Weather Swings")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+ranges = high - low
+max_day = days[np.argmax(ranges)]
+print("Largest swing:", ranges.max(), "°C on day", max_day)
+
+Output:
+Largest swing: 10 °C on day 7
+
+Explanation:
+Functions used: plot(), legend(), grid(), argmax()
+Usage: plot() to draw lines, legend() to add labels, grid() to show gridlines, argmax() to find largest swing
+Interpret: The largest swing is 10 °C on day 7, while the highest temperature (35 °C) occurs on day 6.
+The hottest day is not the most volatile.
