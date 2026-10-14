@@ -1,0 +1,36 @@
+Question 17: Why Are Sales Falling?
+
+AIM: Add total column, plot sales trends, identify drivers.
+
+Code:
+import pandas as pd
+import matplotlib.pyplot as plt
+
+store = pd.DataFrame({'month': ['Apr','May','Jun','Jul','Aug','Sep'],
+                      'phones': [120,125,118,110,95,80],
+                      'accessories': [60,62,65,66,70,75]})
+
+store['total'] = store['phones'] + store['accessories']
+
+plt.plot(store['month'], store['phones'], 'o-', label='Phones')
+plt.plot(store['month'], store['accessories'], 's-', label='Accessories')
+plt.plot(store['month'], store['total'], 'd--', label='Total')
+plt.title("Store Sales Trends")
+plt.legend()
+plt.show()
+
+print(store)
+
+Output:
+  month  phones  accessories  total
+0   Apr     120           60    180
+1   May     125           62    187
+2   Jun     118           65    183
+3   Jul     110           66    176
+4   Aug      95           70    165
+5   Sep      80           75    155
+
+Explanation:
+Functions used: plot(), legend(), title()
+Usage: plot() to draw lines, legend() to label series, title() to add chart title
+Interpretation: The owner’s claim is wrong: only phones drive the fall, accessories are rising.
