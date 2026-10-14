@@ -1,0 +1,47 @@
+Question 9: Player Efficieny
+
+AIM: Vectorized calculation, apply with custom function, and mapping tiers to bonus points.
+
+Code:
+import pandas as pd
+
+players = pd.DataFrame({'player': ['A', 'B', 'C', 'D', 'E', 'F'],
+                        'score': [4200, 1800, 7600, 3100, 5900, 900],
+                        'minutes': [30, 45, 60, 20, 40, 15]})
+
+players['score_per_min'] = players['score'] / players['minutes']
+
+def tier_func(score):
+    if score >= 6000:
+        return 'Elite'
+    elif score >= 3000:
+        return 'Skilled'
+    else:
+        return 'Rookie'
+
+players['tier'] = players['score'].apply(tier_func)
+
+bonus_map = {'Elite': 500, 'Skilled': 200, 'Rookie': 50}
+players['bonus'] = players['tier'].map(bonus_map)
+
+total_bonus = players['bonus'].sum()
+print(players)
+print("\nTotal bonus:", total_bonus)
+
+
+Output:
+  player  score  minutes  score_per_min     tier  bonus
+0      A   4200       30     140.000000  Skilled    200
+1      B   1800       45      40.000000   Rookie     50
+2      C   7600       60     126.666667    Elite    500
+3      D   3100       20     155.000000  Skilled    200
+4      E   5900       40     147.500000  Skilled    200
+5      F    900       15      60.000000   Rookie     50
+
+Total bonus: 1200
+
+Explantion:
+Functions used: df['score']/df['minutes'], apply(), map(), sum().
+Usage: df['score']/df['minutes']: vectorized operation to compute efficiency, apply() to assign tiers based on score thresholds.
+map() to convert tiers into bonus points and sum() to compute total bonus.
+Interpretation: Top scorer is C (7600), but D is most efficient with 155.0 score/min.(No the top scorer is not the most efficient)
