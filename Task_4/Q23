@@ -1,0 +1,35 @@
+Question 23: Goal Check Across Two Weeks
+
+AIM: Compare daily steps across two weeks with goal reference line.
+
+Code:
+import matplotlib.pyplot as plt
+import numpy as np
+
+week1=[8200,10400,6100,12000,9800,3000,7500]
+week2=[9000,11000,8500,7000,12500,5000,9500]
+days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+
+fig,axes=plt.subplots(1,2,figsize=(12,5),sharey=True)
+
+axes[0].bar(days,week1,color=['red' if v<8000 else 'blue' for v in week1])
+axes[0].axhline(8000,color='green',linestyle='--')
+axes[0].set_title("Week 1")
+
+axes[1].bar(days,week2,color=['red' if v<8000 else 'blue' for v in week2])
+axes[1].axhline(8000,color='green',linestyle='--')
+axes[1].set_title("Week 2")
+
+plt.suptitle("Daily Steps vs Goal")
+plt.show()
+
+print("Week1 mean:",np.mean(week1),"Week2 mean:",np.mean(week2))
+
+Output:
+Week1 mean: 8142.857142857143 Week2 mean: 8928.57142857143
+
+Explanation:  
+Functions used: bar(), axhline(), mean()
+Usage: bar() to plot daily steps, axhline() to mark goal line, mean() to compute weekly average
+Interpretation: The user met the goal on 4 days in Week 1 and 5 days in Week 2. 
+Weekly mean improved from ≈8143 to ≈8929. The user improved in the second week.
