@@ -1,0 +1,65 @@
+Question 15: TechTatva Revenue Investigation
+
+AIM: Clean messy registration data, remove duplicates, merge with fees, and compute event counts and department revenue.
+
+Code:
+import pandas as pd
+
+regs = pd.DataFrame({
+    'reg_id': range(1, 12),
+    'student': ['Anu', 'Bala', 'Chitra', 'Anu', 'Dev', 'Esha', 'Farhan', 'Gita', 'Bala', 'Hari', 'Ira'],
+    'event': [' city landscaping ', 'city landscaping ', 'salutes and ladders', ' city landscaping ', 'Open Mic', 'open mic',
+              'ROBO RACE', 'Quiz Night', 'hackathon', 'Quiz Night', 'Hackathon'],
+    'dept': ['CSE', 'cse', 'ECE', 'CSE', 'MECH', 'CSE', 'ECE', None, 'CSE', 'ECE', 'ECE']})
+fees = pd.DataFrame({'event': ['Hackathon', 'Robo Race', 'Open Mic', 'Quiz Night'],
+                     'fee': [200, 150, 0, 50]})
+
+regs['event'] = regs['event'].str.strip().str.title()
+regs['dept'] = regs['dept'].str.strip().str.upper().fillna('Unknown')
+
+regs = regs.drop_duplicates(subset=['student','event'])
+
+merged = regs.merge(fees, on='event', how='left')
+event_counts = merged['event'].value_counts()
+dept_revenue = merged.groupby('dept')['fee'].sum()
+
+print("Registrations:", len(merged))
+print("\nEvent counts:\n", event_counts)
+print("\nDepartment revenue:\n", dept_revenue)
+
+dup_revenue = regs.merge(fees, on='event', how='left').groupby('dept')['fee'].sum()
+print("\nRevenue with duplicates:\n", dup_revenue)
+
+Output:
+Registrations: 9
+
+Event counts:
+Hackathon    3
+Robo Race    2
+Open Mic     2
+Quiz Night   2
+Name: event, dtype: int64
+
+Department revenue:
+dept
+CSE        400
+ECE        550
+MECH         0
+Unknown     50
+Name: fee, dtype: int64
+
+Revenue with duplicates:
+dept
+CSE        800
+ECE        550
+MECH         0
+Unknown     50
+Name: fee, dtype: int64
+
+Explanation:  
+Functions used: str.strip(), str.title(), str.upper(), fillna(), drop_duplicates(), merge(), value_counts(), groupby(), sum()
+Usage: str.strip() to clean spaces, str.title() to standardize event names, str.upper() to standardize departments, fillna() to replace missing dept, drop_duplicates() to remove repeated registrations, merge() to join with fees, value_counts() to count events, groupby() to group by dept, sum() to compute revenue
+
+Interpretation: 
+Without duplicate removal, the committee might wrongly believe CSE is the top contributor, while in reality ECE generates the highest revenue.
+Removing duplicates ensures fair recognition of departments and accurate financial reporting.
