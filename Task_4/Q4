@@ -1,0 +1,47 @@
+Question 4: Mess Rush Hour
+
+AIM: DataFrame creation, indexing and slicing with loc and iloc
+
+Code:
+import pandas as pd
+
+canteen = {
+    'hour': [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+    'sold': [40, 55, 35, 90, 210, 180, 60, 30, 70, 95],
+    'prepared': [50, 60, 50, 100, 220, 230, 80, 60, 90, 110]
+}
+
+df = pd.DataFrame(canteen)
+df.set_index('hour', inplace=True)
+print("Sold (hours 11 to 13):\n", df.loc[11:13, 'sold'])
+print("\nRows at positions 3 and 4:\n", df.iloc[3:5])
+busy_hours = df[df['sold'] >= 90]
+print("\nBusy hours:\n", busy_hours)
+
+
+Output:
+Sold (hours 11 to 13):
+ hour
+11     90
+12    210
+13    180
+Name: sold, dtype: int64
+
+Rows at positions 3 and 4:
+       sold  prepared
+hour                
+11      90       100
+12     210       220
+
+Busy hours:
+       sold  prepared
+hour                
+11      90       100
+12     210       220
+13     180       230
+17      95       110
+
+Explanation:
+Functions used: df.loc[],df.iloc[],df.set_index()
+Usage: df.set_index() to set index for dataframe, df.loc and df.iloc for slicing
+Interpretation: The difference arises because loc slicing is inclusive of the end label, while iloc slicing is exclusive of the end position.
