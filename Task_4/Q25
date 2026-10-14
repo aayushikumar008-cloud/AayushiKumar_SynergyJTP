@@ -1,0 +1,38 @@
+Question 25: Publication-Ready Dashboard Figure
+
+AIM: Create a horizontal bar chart of class averages with target line and save figure.
+
+Code:
+import matplotlib.pyplot as plt
+import os
+
+subjects=['Maths','Physics','Programming','Chemistry','English']
+class_avg=[72.3,65.1,81.4,58.9,76.0]
+target=70
+
+order=sorted(range(len(class_avg)),key=lambda i:class_avg[i])
+subjects=[subjects[i] for i in order]
+class_avg=[class_avg[i] for i in order]
+
+plt.figure(figsize=(8,5))
+colors=['red' if v<target else 'blue' for v in class_avg]
+plt.barh(subjects,class_avg,color=colors)
+plt.axvline(target,color='green',linestyle='--')
+for i,v in enumerate(class_avg):
+    plt.text(v+1,i,str(v))
+plt.xlabel("Average")
+plt.title("Subject Performance vs Target")
+
+os.makedirs("task_4/figures",exist_ok=True)
+plt.savefig("task_4/figures/subject_performance.png",dpi=300,bbox_inches='tight')
+print("File saved:",os.path.exists("task_4/figures/subject_performance.png"))
+
+Output:
+File saved: True
+
+Explanation:  
+Functions used: barh(), axvline(), text(), savefig(), makedirs()
+Usage: barh() to plot averages, axvline() to mark target, text() to label bars, savefig() to save figure, makedirs() to create folder
+Interpretation: Chemistry (58.9) and Physics (65.1) fall below the target and need attention.
+The colleague’s blank image happened because plt.show() clears the figure before saving. 
+The correct order is to call savefig() before show().
