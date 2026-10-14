@@ -1,0 +1,55 @@
+Question 3: Spotify song list
+
+AIM: Understanding unique elements and usage of conditional statements in dataframe
+
+Code:
+import pandas as pd
+
+songs = {
+    'song': ['Neon Drive', 'Monsoon Loop', 'Gravity', 'Night Bus',
+             'Cherry Static', 'Dust Roads', 'Run It Back', 'Paper Moon'],
+    'genre': ['Pop', 'LoFi', 'Rock', 'LoFi', 'Pop', 'Folk', 'HipHop', 'Folk'],
+    'streams_k': [520, 310, 450, 280, 610, 150, 390, 205],
+    'skip_pct': [18, 9, 32, 12, 41, 7, 27, 10],
+    'duration_sec': [201, 245, 289, 198, 176, 310, 187, 262]
+}
+
+df = pd.DataFrame(songs)
+print("Shape:", df.shape)
+print("\nData types:\n", df.dtypes)
+print("\nDistinct genres:", df['genre'].nunique())
+top3 = df.nlargest(3, 'streams_k')[['song', 'streams_k']]
+print("\nTop 3 songs by streams:\n", top3)
+popular_skipped = df[(df['streams_k'] > 400) & (df['skip_pct'] > 25)][['song', 'streams_k', 'skip_pct']]
+print("\nPopular but skipped songs:\n", popular_skipped)
+
+
+Output:
+Shape: (8, 5)
+
+Data types:
+ song              str
+genre             str
+streams_k       int64
+skip_pct        int64
+duration_sec    int64
+dtype: object
+
+Distinct genres: 5
+
+Top 3 songs by streams:
+             song  streams_k
+4  Cherry Static        610
+0     Neon Drive        520
+2        Gravity        450
+
+Popular but skipped songs:
+             song  streams_k  skip_pct
+2        Gravity        450        32
+4  Cherry Static        610        41
+
+Explanation:
+Functions used: df.nunique(), df.nlargest()
+Usage: df.nunique() to find unique elements in dataframe, df.nlargest() to find largest elements in dataframe
+Interpretation: If the platform recommends songs based only on stream counts, users may be shown tracks that many listeners abandon quickly.
+A better recommendation system should balance streams with skip rates, completion rates, and user feedback.
