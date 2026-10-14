@@ -1,0 +1,38 @@
+Question 24: Telling the Revenue Story
+
+AIM: Compute growth rates and annotate key changes.
+
+Code:
+import pandas as pd
+import matplotlib.pyplot as plt
+
+revenue=pd.DataFrame({'month':['Jan','Feb','Mar','Apr','May','Jun'],
+                      'revenue':[12,15,21,19,24,22]})
+
+revenue['growth']=revenue['revenue'].pct_change()*100
+
+plt.figure(figsize=(8,5))
+plt.plot(revenue['month'],revenue['revenue'],'o-',label='Revenue')
+for i,v in enumerate(revenue['revenue']):
+    plt.text(i,v+0.5,str(v))
+
+max_growth_month=revenue['month'][revenue['growth'].idxmax()]
+min_growth_month=revenue['month'][revenue['growth'].idxmin()]
+
+plt.annotate("Highest Growth",xy=(2,21),xytext=(1,25),
+             arrowprops=dict(facecolor='green'))
+plt.annotate("Biggest Drop",xy=(3,19),xytext=(4,15),
+             arrowprops=dict(facecolor='red'))
+
+plt.xlabel("Month")
+plt.ylabel("Revenue (₹ lakh)")
+plt.title("Revenue Trend: March +40%, April −9.5%")
+plt.legend()
+plt.show()
+
+Output: Line chart with annotations.
+
+Explanation:  
+Functions used: pct_change(), plot(), text(), annotate()
+Usage: pct_change() to compute growth, plot() to draw line, text() to label points, annotate() to highlight changes
+Interpretation: The founder can say: “Our strongest growth was in March (+40%), but April saw a −9.5% drop.”
