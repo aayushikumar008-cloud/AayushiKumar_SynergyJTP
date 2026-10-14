@@ -1,0 +1,40 @@
+Question 7:The Faulty  Manipal Weather Station
+
+AIM: Handling missing values, dropping faulty rows, and comparing mean vs median for robustness.
+
+Code:
+import pandas as pd
+import numpy as np
+
+weather = pd.DataFrame({
+    'day': range(1, 11),
+    'temp_c': [28.1, 29.0, np.nan, 30.2, 29.5, 55.0, np.nan, 27.8, 28.6, 29.3],
+    'humidity': [64, 61, 63, np.nan, 60, 58, np.nan, 66, 65, 62]
+})
+print("Missing per column:\n", weather.isna().sum())
+print("\nRows with any missing:", weather.isna().any(axis=1).sum())
+weather = weather.dropna(subset=['temp_c','humidity'], how='all')
+print("\nRows after dropping:", len(weather))
+weather['temp_c'].fillna(weather['temp_c'].median(), inplace=True)
+weather['humidity'].fillna(weather['humidity'].median(), inplace=True)
+print("\nTemperature mean:", round(weather['temp_c'].mean(),2))
+print("Temperature median:", round(weather['temp_c'].median(),2))
+
+Output:
+Missing per column:
+ day         0
+temp_c      2
+humidity    2
+dtype: int64
+
+Rows with any missing: 3
+
+Rows after dropping: 9
+
+Temperature mean: 32.19
+Temperature median: 29.15
+
+Explanation:
+Functions used: isna().sum(), dropna(), fillna(), mean(), median()
+Usage: isna().sum() to count missing values, dropna() to drop and fillna() to fill missing values, mean and median to calculate the mean and median values.
+Interpretation: Median is safer because it resists distortion from extreme outliers.
