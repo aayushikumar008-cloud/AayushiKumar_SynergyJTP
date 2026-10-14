@@ -41,6 +41,6 @@ Event with most registrations: Valorant tournament ( 210 rate  76.2 )
 Event with highest attendance rate: Open Mic ( 96.4 )
 
 Explanation:
-Functions used: df.DataFrame(),df.shape,df.dtypes,df.loc[],df.idxmax()
-Usage: df.DataFrame() for dataframe creation, df.shape and df.dtypes for attributes, df.loc to find corresponding value of dataframe, df.idxmax() for max value of that category
+Functions used: pd.DataFrame(),df.shape,df.dtypes,df.loc[],df.idxmax()
+Usage: pd.DataFrame() for dataframe creation, df.shape and df.dtypes for attributes, df.loc to find corresponding value of dataframe, df.idxmax() for max value of that category
 Interpretation: After judging the events with highest registration vs highest attendance rate and seeing that they do not coincide, we conclude that one must not judge an event on registrations alone. Further data is needed.
