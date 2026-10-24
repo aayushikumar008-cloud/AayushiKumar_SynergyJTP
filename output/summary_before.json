@@ -1,0 +1,83 @@
+{
+    "rows": 11,
+    "columns": 9,
+    "missing_values": {
+        "student_id": 0,
+        "name": 0,
+        "domain": 0,
+        "attendance_percent": 1,
+        "score": 1,
+        "study_hours": 0,
+        "height": 0,
+        "weight": 1,
+        "submitted": 0
+    },
+    "duplicates": 1,
+    "dtypes": {
+        "student_id": "str",
+        "name": "str",
+        "domain": "str",
+        "attendance_percent": "str",
+        "score": "str",
+        "study_hours": "str",
+        "height": "str",
+        "weight": "str",
+        "submitted": "str"
+    },
+    "stats": {
+        "student_id": {
+            "count": 11,
+            "unique": 10,
+            "top": "S005",
+            "freq": 2
+        },
+        "name": {
+            "count": 11,
+            "unique": 10,
+            "top": "Rohan",
+            "freq": 2
+        },
+        "domain": {
+            "count": 11,
+            "unique": 9,
+            "top": "ML",
+            "freq": 2
+        },
+        "attendance_percent": {
+            "count": 10,
+            "unique": 9,
+            "top": "72",
+            "freq": 2
+        },
+        "score": {
+            "count": 10,
+            "unique": 7,
+            "top": "0",
+            "freq": 2
+        },
+        "study_hours": {
+            "count": 11,
+            "unique": 9,
+            "top": "4",
+            "freq": 2
+        },
+        "height": {
+            "count": 11,
+            "unique": 10,
+            "top": "172 cm",
+            "freq": 2
+        },
+        "weight": {
+            "count": 10,
+            "unique": 9,
+            "top": "70kg",
+            "freq": 2
+        },
+        "submitted": {
+            "count": 11,
+            "unique": 5,
+            "top": "yes",
+            "freq": 6
+        }
+    }
+}
